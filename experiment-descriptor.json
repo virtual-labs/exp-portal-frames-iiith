@@ -6,13 +6,13 @@
     {
       "unit-type": "aim"
     },
-      {
+    {
       "target": "pretest.html",
       "source": "pretest.json",
       "label": "Pretest",
       "unit-type": "task",
       "content-type": "assesment"
-}
+    },
     {
       "target": "theory.html",
       "source": "theory.md",
@@ -34,14 +34,14 @@
       "unit-type": "task",
       "content-type": "simulation"
     },
-      {
+    {
       "target": "posttest.html",
       "source": "posttest.json",
       "label": "Posttest",
       "unit-type": "task",
       "content-type": "assesment"
-}
-     {
+    },
+    {
       "target": "assignment.html",
       "source": "assignment.md",
       "label": "Assignment",
