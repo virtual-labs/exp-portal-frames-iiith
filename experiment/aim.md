@@ -7,6 +7,3 @@ Portal frame construction is therefore typically seen in warehouses, barns and o
 #### Objective
 
 To know the shear force diagram and bending moment diagram for a given portal frame
-
-
-[Read more](http://bsa-iiith.vlabs.ac.in/exp5/Exp-5%20Portal%20frames.pdf)

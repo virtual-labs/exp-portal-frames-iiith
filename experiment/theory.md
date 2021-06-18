@@ -2,6 +2,3 @@ Portal frames are frequently used over the entrance of a bridge and as a main st
 
 
 <img src="images/Theory_Figure.JPG" width="500" height="250">
-
-
-[Read more](http://bsa-iiith.vlabs.ac.in/exp5/Exp-5%20Portal%20frames.pdf)
