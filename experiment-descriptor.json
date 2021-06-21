@@ -21,33 +21,26 @@
       "content-type": "text"
     },
     {
-      "target": "procedure.html",
-      "source": "procedure.md",
-      "label": "Procedure",
-      "unit-type": "task",
-      "content-type": "text"
-    },
-    {
       "target": "simulation.html",
       "source": "simulation/index.html",
       "label": "Simulation",
       "unit-type": "task",
       "content-type": "simulation"
     },
-    {
-      "target": "posttest.html",
-      "source": "posttest.json",
-      "label": "Posttest",
-      "unit-type": "task",
-      "content-type": "assesment"
-    },
-    {
+     {
       "target": "assignment.html",
       "source": "assignment.md",
       "label": "Assignment",
       "unit-type": "task",
       "content-type": "text"
-    },
+     },
+     {
+      "target": "posttest.html",
+      "source": "posttest.json",
+      "label": "Posttest",
+      "unit-type": "task",
+	 "content-type": "assesment"
+     },
     {
       "target": "references.html",
       "source": "references.md",
