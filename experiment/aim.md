@@ -4,6 +4,3 @@ Because of these very strong and rigid joints some of the bending moment in the 
 Portal frame construction is therefore typically seen in warehouses, barns and other places where large, open spaces are required at low cost and a pitched roof is acceptable
 
 
-#### Objective
-
-To know the shear force diagram and bending moment diagram for a given portal frame
