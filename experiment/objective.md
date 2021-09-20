@@ -1,0 +1,1 @@
+- To know the shear force diagram and bending moment diagram for a given portal frame
