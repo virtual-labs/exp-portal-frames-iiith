@@ -1,17 +1,373 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-  <!-- Your code goes here-->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.6-b/css/style.min.css">
+		<link rel="stylesheet" href="css/main.css">
+		<script type="text/javascript" src="js/bulma-slider.min.js"></script>
+ 		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+	</head>
+	<body class="page">
+		<div class="columns is-centered is-flex">
+			<div class="column mt-2 is-10-desktop is-10-tablet is-10-mobile has-text-centered">
+				<div class="v-instruction-container">
+					<div class="v-instruction-title">Instructions</div>
+					<div id="procedure-message" class="v-instruction-text" style=" text-align:left;"></div>
+				</div> 
 
-       <p> Make sure that you have <a href="../../../Introduction.html" target="_PARENT">prerequisites</a> installed to run Virtual lab Portal Frames Experiment.</p>
-       <p><li> Click <a href="Animation/5.Portal%20Frames.swf"> here</a> for Flash view on Portal Frames Experiment</li></p>
-       <p><li> Click <a href="vlab2/5.PortalFrames.html"> here</a> for the Virtual lab on Portal Frames Experiment</li> </p>
-                
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
-</body>
+				<div class="column center-content">
+					<div class="select" >
+							<select id="dropdown" onchange="onSelection()"></select>
+					</div>
+					<p><span class="boundaryType"></span></p>
+				</div>
+				
+	 			<div class="columns is-mobile is-centered is-flex">
+	 				<div id="anime-demo" class="column has-text-centered controls">
+						<button id="play" class="v-button" onclick="playSimulation()">Start</button>
+						<button id="restart" class="v-button" onclick = "window.location.reload()">Reset</button>
+					</div> 
+				</div>
+
+			</div>
+		</div>
+		<!-- -->
+		
+		<div class="columns is-centered is-variable is-flex is-flex-wrap-wrap workspace">
+			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
+				<div class="v-datalist-container">
+					<div class="v-datalist-title" id="load"> Load Type</div>
+						<div id="firststeel" class="wood" >	
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Bridge 1" id="plbtn" >Bridge 1
+	            			</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Bridge 2" id="">Bridge 2 
+	            			</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Bridge 3" id="plbtn" >Bridge 3
+	                		</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Bridge 4" id="">Bridge 4 
+	            			</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Bridge 5" id="plbtn" >Bridge 5
+	            			</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Bridge 5" id="">Bridge 6 
+	            			</label>
+         				</div>
+						<div id="secondsteel" style="display:none;" class="steel">
+							<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Frame 1" id="plbtn" >Frame 1
+	            			</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Frame 2" id="">Frame 2 
+	            			</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Frame 3" id="plbtn" >Frame 3
+	                		</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Frame 4" id="">Frame 4 
+	            			</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Frame 5" id="plbtn" >Frame 5
+	            			</label>
+	            			<label class="v-radio v-datalist-row" id="radio-style">
+	            				<input type="radio" class="v-radio-input" name="answer" value="Frame 5" id="">Frame 6 
+	            			</label>
+						</div>
+				</div>
+
+			</div>
+
+			<div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile observations">
+				<div class="v-datalist-container">
+					<div class="v-datalist-title">Observations</div>
+					<!--Equally Supported Beam Observations starts here-->
+					<div id="set1" class="" style="width: 100%; display: none;">
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+						<svg class="canti-pl-sfd" width="150px" height="90px" viewBox="35 250 500 15">
+							<path d="M 200 400 L 200 200 L 400 200 L 400 400 L 400 250 L 200 150 L 200 400 L 150 200 L 350 200 L 400 400" style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes3"  class="" style="width: 100%; font-size:14px;"></p>
+						</svg>
+								
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="canti-pl-bmd" width="150px" height="90px" viewBox="35 250 500 5">
+							<path d="M 200 400 L 200 200 L 400 200 L 400 400 L 400 250 L 200 150 L 200 400 L 250 400 L 150 200 L 350 200 L 450 400 L 400 400 " style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes4"  class="" style="width: 100%; font-size:14px;"></p>
+						</svg>
+					</div>
+
+					<div id="set2" class="" style="width: 100%; display: none;">
+					<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+						<svg class="canti-udl-sfd" width="150px" height="90px" viewBox="5 150 500 50">
+							<path d="M 100 300 L 100 100 L 300 100 L 300 300 L 250 300 L 350 100 L 50 100 L 150 300 L 100 300 L 100 50 L 200 150 L 300 50 L 300 300 " style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes3"  class="" style="width: 100%; font-size:14px;"></p>
+						</svg>
+								
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="canti-udl-bmd" width="150px" height="90px" viewBox="5 150 500 50">
+							<path d="M 100 300 L 100 100 L 300 100 L 300 300 L 250 300 L 350 100 L 50 100 L 150 300 L 100 300 L 100 50 C 150 100 150 150 200 150 C 250 150 250 100 300 50 L 300 300 " style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes4"  class="" style="width: 100%; font-size:14px;"></p>
+						</svg>
+					</div>
+							
+					<div id="set3"  class="" style="width: 100%; display: none;" >
+						<!-- <p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+						<svg class="fix-pl-sfd" width="150px" height="90px" viewBox="110 124 400 65">
+							<path d="M 100 300 L 100 50 L 350 50 L 350 300 L 300 50 C 150 100 100 50 50 50 L 100 300 " style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes5"  class="" style="width: 100%; font-size:14px;"></p>
+						</svg> -->
+								
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="fix-pl-bmd" width="150px" height="90px" viewBox="35 220 500 50">
+							<path d="M 150 400 L 150 150 L 400 150 L 400 400 L 450 150 L 200 150 L 150 400 L 150 200 L 400 100 L 400 400 " style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes4"  class="" style="width: 100%; font-size:14px;"></p>
+						</svg>
+					</div>
+					<div id="set4"  class="" style="width: 100%; display: none;" >
+						<!-- <p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+						<svg class="fix-udl-sfd" width="150px" height="90px" viewBox="110 124 400 65">
+							<path d="M 100 300 L 100 50 L 350 50 L 350 300 L 300 50 C 150 100 100 50 50 50 L 100 300 " style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes5"  class="" style="width: 100%; font-size:14px;"></p>
+						</svg> -->
+								
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="fix-udl-bmd" width="150px" height="90px" viewBox="5 120 500 50">
+							<path d="M 100 300 L 100 50 L 350 50 L 350 300 L 300 50 C 150 100 100 50 50 50 L 100 300 " style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes4"  class="" style="width: 100%; font-size:14px;"></p>
+						</svg>
+					</div>
+					<!--Place the remaining 2 Observations here-->
+					<!--Equally Supported Beam Observations ends here-->
+
+					<!--Unequally Supported Beam Observations starts here-->
+					<div id="unb1" style="width: 100%; height: 50; display: none;">
+					<!-- <p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p>
+						<svg class="frame1-sfd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 450 350 450 300 450 200 C 350 250 300 250 200 200 C 150 250 150 300 150 350 " style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes15" style="width: 100%; font-size:14px;;"></p>
+						</svg> -->
+
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="frame1-bmd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 500 350 500 300 500 200 C 350 250 300 250 200 200 C 150 250 150 300 150 350 " style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes16" style="width: 100%; font-size:14px;;"></p>
+						</svg>
+					</div>
+					<div id="unb2" style="width: 100%; height: 50; display: none;">
+					<!-- <p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p>
+						<svg class="frame2-sfd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 450 350 450 300 450 200 C 350 250 300 250 200 200 C 150 250 150 300 150 350 " style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes15" style="width: 100%; font-size:14px;;"></p>
+						</svg> -->
+
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="frame2-bmd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 500 350 500 300 500 200 C 350 250 300 250 200 200 C 150 250 150 300 150 350" style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes16" style="width: 100%; font-size:14px;;"></p>
+						</svg>
+					</div>
+					<div id="unb3" style="width: 100%; height: 50; display: none;">
+					<!-- <p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p>
+						<svg class="frame2-sfd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 450 350 450 300 450 200 C 350 250 300 250 200 200 C 150 250 150 300 150 350 " style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes15" style="width: 100%; font-size:14px;;"></p>
+						</svg> -->
+
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="frame3-bmd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 500 350 500 300 500 200 C 450 200 200 250 200 200 C 150 250 150 300 150 350 " style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes16" style="width: 100%; font-size:14px;;"></p>
+						</svg>
+					</div>
+					<div id="unb4" style="width: 100%; height: 50; display: none;">
+						<!-- <p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> -->
+						<svg class="frame2-sfd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 450 350 450 300 450 200 C 350 250 300 250 200 200 C 150 250 150 300 150 350 " style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes15" style="width: 100%; font-size:14px;;"></p>
+						</svg>
+
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="frame4-bmd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 425 200 L 400 450 C 450 300 450 250 450 200 C 350 250 250 250 200 200 C 150 200 150 350 150 350 " style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes16" style="width: 100%; font-size:14px;;"></p>
+						</svg>
+					</div>
+					<div id="unb5" style="width: 100%; height: 50; display: none;">
+						<!-- <p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p>
+						<svg class="frame2-sfd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 450 350 450 300 450 200 C 350 250 300 250 200 200 C 150 250 150 300 150 350 " style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes15" style="width: 100%; font-size:14px;;"></p>
+						</svg> -->
+
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="frame5-bmd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 500 350 500 300 500 200 C 400 200 350 250 250 200 C 250 200 250 300 150 350 " style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes16" style="width: 100%; font-size:14px;;"></p>
+						</svg>
+					</div>
+					<div id="unb6" style="width: 100%; height: 50; display: none;">
+						<!-- <p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p>
+						<svg class="frame2-sfd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 150 350 L 150 200 L 400 200 L 400 450 C 450 350 450 300 450 200 C 350 250 300 250 200 200 C 150 250 150 300 150 350 " style="stroke:black;fill:none;stroke-width:5px;" />
+							<p id="mes15" style="width: 100%; font-size:14px;;"></p>
+						</svg> -->
+
+						<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+						<svg class="frame6-bmd" width="150px" height="90px" viewBox="70 170 500 275">
+							<path d="M 200 350 L 200 200 L 450 200 L 450 450 C 400 400 400 300 400 200 C 300 250 250 150 150 200 C 150 250 150 300 200 350 " style="stroke:black; fill:none;stroke-width:5px;" />
+							<p id="mes16" style="width: 100%; font-size:14px;;"></p>
+						</svg>
+					</div>
+					<!--Unequally Supported Beam Observations ends here-->
+				</div>
+			</div>
+
+			<div class="column has-text-centered is-6-desktop is-10-tablet is-10-mobile simulation v-canvas-container" id="container">
+					<!-- <canvas id="main" class="v-canvas-container"></canvas> -->
+				
+				<div class="columns">
+  					<div class="column">
+  						<!-- arrow starts -->
+						<div id ="arrow" class="arrow column">
+							<svg width="200" height="100"viewBox="130 120 360 218">
+								<g id="arrow_down">
+									<path style="fill:#030104;" d="M 100 100 L 400 100 L 400 150 L 100 150 L 100 150 L 100 100 " fill="2px solid black"/>
+								</g>
+							</svg>
+						</div>
+						<div id="arrow1" style="width: 100%; display: none;" >
+							<svg width="550" height="100"viewBox="70 60 250 300">
+									<g id="arrow_down">
+										<path style="fill:#030104;" d="M 100 100 L 150 100 L 150 200 L 100 200 L 100 100"/>
+									</g>
+								</svg>
+							</div>
+							<div id="arrow2" style="width: 100%; display: none;">
+								<svg width="550" height="100"viewBox="100 120 15 218">
+									<g id="arrow_down">
+										<path style="fill:#030104;" d="M 200 300 L 50 300 L 50 350 L 200 350 L 200 300 "/>
+									</g>
+								</svg>
+							</div>
+							<div id="arrow3" style="width: 100%; display: none;">
+								<svg width="550" height="100"viewBox="400 120 20 150">
+									<g id="arrow_down">
+										<path style="fill:#030104;" d="M 100 250 L 150 250 L 150 300 L 100 300 L 100 250"/>
+									</g>
+								</svg>
+							</div>
+							<div id="arrow4" style="width: 100%; display: none;">
+								<svg width="550" height="100"viewBox="220 120 230 150">
+									<g id="arrow_down">
+										<path style="fill:#030104;" d="M 50 300 L 50 100 L 100 100 L 100 300 L 50 300 "/>
+									</g>
+								</svg>
+							</div>
+							<div id="arrow5" style="width: 100%; display: none;">
+								<svg width="550" height="100" viewBox="00 150 900 150"  >
+									<g id="arrow_down">
+										<path style="fill:#030104;" d="M 400 350 L 400 100 L 450 100 L 450 350 L 400 350 "/>
+									</g>
+								</svg>
+							</div>
+							<div id="beam12" style="display:none;">	
+								<svg  class="" width="600" height="200" viewBox="00 150 900 150"  stroke="#BA8C63" fill="#BA8C63">
+									<path id="steel-beam-6" class="st1" d="M 100 300 L 50 300 L 50 350 L 200 350 L 200 300 L 150 300 C 100 250 100 200 100 150 C 200 100 200 200 350 150 C 300 200 300 350 350 450 L 300 450 L 300 500 L 450 500 L 450 450 L 400 450 C 350 300 350 200 400 100 C 250 150 200 50 50 100 C 50 200 50 250 100 300 "/>
+								</svg>
+							</div>
+						<!-- Equally Supported Main Beam-->
+						<div id="main-beam1">
+							<svg class="" width="600" height="200" viewBox="-340 130 1300 220"  stroke="2px solid black" fill="#ff944d">
+								<path id="canti-pl-main-beam" class="st1" d="M 100 350 L 50 350 L 50 400 L 200 400 L 200 350 L 150 350 L 150 100 L 350 100 L 350 350 L 300 350 L 300 400 L 450 400 L 450 350 L 400 350 L 400 50 L 100 50 L 100 350 "/> 			
+							</svg>
+						</div>
+						<!-- Equally Supported Main Beam-->
+						<!-- Unequally Supported Main Beam-->
+						<div id="main-beam2" style="display: none;">
+							<svg class="" width="600" height="200" viewBox="-340 140 1300 280"  stroke="2px solid black" fill="#ff944d">
+								<path id="canti-udl-main-beam" class="st1" d="M 100 300 L 50 300 L 50 350 L 200 350 L 200 300 L 150 300 L 150 150 L 350 150 L 350 450 L 300 450 L 300 500 L 450 500 L 450 450 L 400 450 L 400 100 L 100 100 L 100 300"/> 			
+							</svg>
+						</div>
+						<!-- Unequally Supported Main Beam-->
+
+						<!-- Equally Supported Beam animations starts here-->
+						<div id="beam1" style="display: none;">
+							<svg class="" width="600" height="200" viewBox="-340 130 1300 220"  stroke="#BA8C63" fill="#BA8C63">
+								<path id="canti-beam-pl"  class="st1" d="M 100 350 L 50 350 L 50 400 L 200 400 L 200 350 L 150 350 C 100 250 100 150 150 100 C 200 150 300 150 350 100 C 400 150 400 250 350 350 L 300 350 L 300 400 L 450 400 L 450 350 L 400 350 C 450 200 450 100 400 50 C 300 100 200 100 100 50 C 50 100 50 200 100 350" />
+							</svg>
+						</div>				
+					
+						<div id="beam2" style="display: none;">	
+							<svg width="600" height="200" viewBox="-340 130 1300 220"  stroke="#BA8C63" fill="#BA8C63">
+					 			<path id="canti-beam-udl" class="st1" d="M 100 350 L 50 350 L 50 400 L 200 400 L 200 350 L 150 350 C 100 250 100 150 150 100 C 200 150 300 150 350 100 C 400 150 400 250 350 350 L 300 350 L 300 400 L 450 400 L 450 350 L 400 350 C 450 200 450 100 400 50 C 300 100 200 100 100 50 C 50 100 50 200 100 350" />
+							</svg>
+						</div>
+					
+						<div id="beam3" style="display: none;">
+							<svg width="600" height="200" viewBox="-340 130 1300 220"  stroke="#BA8C63" fill="#BA8C63">
+					 			<path id="fixed-beam-pl" class="st1" d="M 100 350 L 50 350 L 50 400 L 200 400 L 200 350 L 150 350 C 100 250 100 150 150 100 C 250 150 350 150 400 100 C 400 150 400 250 350 350 L 300 350 L 300 400 L 450 400 L 450 350 L 400 350 C 450 200 450 100 450 50 C 350 100 250 100 150 50 C 100 50 50 150 100 350" />
+							</svg>
+						</div>
+
+						<div id="beam4" style="display: none;">
+							<svg  width="600" height="200" viewBox="-340 130 1300 220"  stroke="#BA8C63" fill="#BA8C63">
+								<path id="fixed-beam-udl" class="st1" d=" M 100 350 L 50 350 L 50 400 L 200 400 L 200 350 L 150 350 C 100 250 50 150 100 100 C 150 150 250 150 350 100 C 400 150 350 300 350 350 L 300 350 L 300 400 L 450 400 L 450 350 L 400 350 C 400 250 450 100 350 50 C 250 100 200 100 50 50 C 0 100 50 250 100 350" />
+					 		</svg>
+						</div>
+					
+						<div id="beam5" style="display: none;">
+							<svg width="600" height="200" viewBox="-340 130 1300 220"  stroke="#BA8C63" fill="#BA8C63">
+								<path id="oness-beam-pl" class="st1" d="M 0 350 L 0 400 L 150 400 L 150 350 L 100 350 C 150 250 150 200 150 100 C 300 150 300 50 400 100 C 400 150 400 250 300 350 L 250 350 L 250 400 L 400 400 L 400 350 L 350 350 C 450 250 450 200 450 50 C 300 0 300 100 100 50 C 100 150 100 200 50 350 L 0 350 "/>
+							</svg>
+						</div>
+						
+						<div id="beam6" style="display: none;">
+							<svg width="600" height="200" viewBox="-340 130 1300 220"  stroke="#BA8C63" fill="#BA8C63">
+								<path id="oness-beam-udl" class="st1" d=" M 100 300 L 50 300 L 50 350 L 200 350 L 200 300 L 150 300 C 200 250 200 200 200 150 C 300 100 300 200 400 150 C 400 250 400 300 350 400 L 300 400 L 300 450 L 450 450 L 450 400 L 400 400 C 450 300 450 200 450 100 C 300 150 300 50 150 100 C 150 200 150 250 100 300"/>
+							</svg>
+						</div>
+					<!-- Equally Supported Beam animations ends here-->
+
+					<!-- Unequally Supported Beam animations starts here-->	
+						<div id="beam7" style="display:none;">
+							<svg  class="" width="484" height="168" viewBox="-340 140 1300 280"  stroke="#BA8C63" fill="#BA8C63">
+								<path id="steel-beam-1" class="st1" d="M 100 300 L 50 300 L 50 350 L 200 350 L 200 300 L 150 300 C 150 250 150 200 200 150 C 250 200 350 200 450 150 C 500 250 400 350 350 450 L 300 450 L 300 500 L 450 500 L 450 450 L 400 450 C 450 350 600 150 450 100 C 350 150 300 150 200 100 C 100 150 100 200 100 300 "/>
+							</svg>
+						</div>
+						
+						<div id="beam8" style="display:none;">
+							<svg  class="" width="484" height="168" viewBox="-340 140 1300 280"  stroke="#BA8C63" fill="#BA8C63">
+								<path id="steel-beam-2" class="st1" d="M 100 300 L 50 300 L 50 350 L 200 350 L 200 300 L 150 300 C 150 250 150 200 200 150 C 200 200 300 200 450 150 C 500 300 400 350 350 450 L 300 450 L 300 500 L 450 500 L 450 450 L 400 450 C 450 400 600 200 450 100 C 300 150 200 150 200 100 C 100 150 100 200 100 300 "/>
+							</svg>
+						</div>
+					
+					<div id="beam9" style="display:none;">
+						<svg  class="" width="600" height="200" viewBox="-340 140 1300 280"  stroke="#BA8C63" fill="#BA8C63">
+							<path id="steel-beam-3" class="st1" d="M 100 300 L 50 300 L 50 350 L 200 350 L 200 300 L 150 300 C 150 250 150 200 200 150 C 250 200 350 200 450 150 C 500 250 400 350 350 450 L 300 450 L 300 500 L 450 500 L 450 450 L 400 450 C 450 350 600 150 450 100 C 350 150 300 150 200 100 C 100 150 100 200 100 300 "/>
+						</svg>
+					</div>
+					<div id="beam10" style="display:none;">
+						<svg  class="" width="600" height="200" viewBox="-340 140 1300 280"  stroke="#BA8C63" fill="#BA8C63">
+							<path id="steel-beam-4" class="st1" d="M 100 300 L 50 300 L 50 350 L 200 350 L 200 300 L 150 300 C 150 250 100 200 150 150 C 200 200 300 200 400 150 C 450 250 400 350 350 450 L 300 450 L 300 500 L 450 500 L 450 450 L 400 450 C 450 350 500 150 400 100 C 300 150 200 150 150 100 C 50 150 100 250 100 300 "/>
+						</svg>
+					</div>
+					<div id="beam11" style="display:none;">
+						<svg  class="" width="600" height="200" viewBox="-340 140 1300 280"  stroke="#BA8C63" fill="#BA8C63">
+							<path id="steel-beam-5" class="st1" d="M 100 300 L 50 300 L 50 350 L 200 350 L 200 300 L 150 300 C 200 250 200 200 200 150 C 300 200 400 100 450 150 C 500 250 450 350 350 450 L 300 450 L 300 500 L 450 500 L 450 450 L 400 450 C 500 350 550 300 500 100 C 400 50 300 150 150 100 C 150 150 150 250 100 300 "/>
+						</svg>
+					</div>
+					<!-- Unequally Supported Beam animations ends here-->	
+				</div>
+  				</div>
+			</div>
+			
+		<script src="./js/main.js"></script>
+	 	<script src="./js/animations.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>	 	
+		<script src="https://cdn.jsdelivr.net/npm/kute.js@2.0.10/dist/kute.min.js"></script>
+	</body>
 </html>
